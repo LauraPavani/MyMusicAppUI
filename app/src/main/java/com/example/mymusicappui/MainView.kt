@@ -21,7 +21,6 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.internal.composableLambda
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -50,6 +49,10 @@ fun MainView(){
     val controller: NavController = rememberNavController()
     val navBackStackEntry by controller.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
+
+    val dialogOpen = remember{
+        mutableStateOf(false)
+    }
 
     val currentScreen = remember{
         viewModel.currentScreen.value
@@ -83,6 +86,7 @@ fun MainView(){
                         }
                         if(item.dRoute == "add_account"){
                             //open dialog
+                            dialogOpen.value = true
                         }else{
                             controller.navigate(item.dRoute)
                             title.value = item.dTitle
@@ -94,6 +98,7 @@ fun MainView(){
 
         ) {
         Navigation(navController = controller, viewModel = viewModel, pd = it)
+        AccountDialog(dialogOpen = dialogOpen)
     }
 }
 
