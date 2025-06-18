@@ -8,6 +8,7 @@ import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.mymusicappui.ui.theme.Home
 
 @Composable
 fun Navigation(navController: NavController, viewModel: MainViewModel, pd: PaddingValues){
@@ -16,7 +17,8 @@ fun Navigation(navController: NavController, viewModel: MainViewModel, pd: Paddi
         modifier = Modifier.padding(pd) ){
 
         composable(Screen.BottomScreen.Home.bRoute){
-            //TODO Add Home Screen
+            //Add Home Screen
+            Home()
         }
         composable(Screen.BottomScreen.Browse.bRoute){
             //TODO Add Browser Screen
