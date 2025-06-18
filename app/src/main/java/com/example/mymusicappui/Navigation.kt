@@ -8,6 +8,7 @@ import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.mymusicappui.ui.theme.BrowseScreen
 import com.example.mymusicappui.ui.theme.Home
 
 @Composable
@@ -21,7 +22,8 @@ fun Navigation(navController: NavController, viewModel: MainViewModel, pd: Paddi
             Home()
         }
         composable(Screen.BottomScreen.Browse.bRoute){
-            //TODO Add Browser Screen
+            //Add Browser Screen
+            BrowseScreen()
         }
         composable(Screen.BottomScreen.Library.bRoute){
             //TODO Add Library Screen
