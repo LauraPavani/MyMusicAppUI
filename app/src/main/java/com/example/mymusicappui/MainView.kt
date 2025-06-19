@@ -19,6 +19,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.ModalBottomSheetLayout
 import androidx.compose.material.ModalBottomSheetValue
@@ -28,8 +29,8 @@ import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material.Scaffold
+import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.primarySurface
 import androidx.compose.material.rememberModalBottomSheetState
 import androidx.compose.material3.Text
@@ -121,7 +122,17 @@ fun MainView(){
             bottomBar = bottomBar,
             topBar = {
                 TopAppBar(title = { Text( title.value) },
-                    actions = ,
+                    actions = {
+                              IconButton(
+                                  onClick = {
+                                      scope.launch {
+                                          if(modalSheetState.isVisible)modalSheetState else modalSheetState.show()
+                                      }
+                                  }
+                              ){
+                                Icon(imageVector = Icons.Default.MoreVert, contentDescription = null)
+                              }
+                    },
                     navigationIcon = { IconButton(onClick = {
                         //Open the drawer
                         scope.launch{
@@ -192,7 +203,7 @@ fun MoreBottomSheet(modifier: Modifier){
     Box(
         Modifier
             .fillMaxWidth()
-            .height(200.dp)
+            .height(230.dp)
             .background(
                 MaterialTheme.colors.primarySurface
             )
@@ -203,6 +214,18 @@ fun MoreBottomSheet(modifier: Modifier){
                     painter = painterResource(id = R.drawable.baseline_settings_24),
                     contentDescription = "Settings")
                 Text(text = "Settings", fontSize = 20.sp, color = Color.White)
+            }
+            Row(modifier = modifier.padding(16.dp)){
+                Icon(modifier = Modifier.padding(end= 8.dp),
+                    painter = painterResource(id = R.drawable.baseline_share_24),
+                    contentDescription = "Share")
+                Text(text = "Share", fontSize = 20.sp, color = Color.White)
+            }
+            Row(modifier = modifier.padding(16.dp)){
+                Icon(modifier = Modifier.padding(end= 8.dp),
+                    painter = painterResource(id = R.drawable.baseline_live_help_24),
+                    contentDescription = "Help")
+                Text(text = "Help", fontSize = 20.sp, color = Color.White)
             }
         }
     }
