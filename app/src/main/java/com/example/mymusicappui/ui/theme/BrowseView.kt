@@ -34,35 +34,14 @@ fun BrowseScreen() {
         listOf("Metal", "Progressive Metal", "Power Metal", "Rock", "Folk", "Instrumental")
 
     LazyVerticalGrid(
-        columns = GridCells.Fixed(2),
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp),
-        contentPadding = PaddingValues(8.dp),
-        verticalArrangement = Arrangement.Center,
-        horizontalArrangement = Arrangement.Center
-    ) {
-
+        GridCells.Fixed(2)){
         items(categories) { categories ->
-            BItem(cat = categories, drawable = R.drawable.baseline_apps_24)
+            BrowserItem(cat = categories, drawable = R.drawable.baseline_apps_24)
         }
 
     }
 }
-@Composable
-fun BItem(cat: String, drawable: Int){
-    Card( modifier = Modifier
-        .padding(16.dp)
-        .size(200.dp),
-        border = BorderStroke(3.dp,color = Color.DarkGray)){
-        Column(verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ){
-            Text(text = cat)
-            Image(painter = painterResource(id = drawable), contentDescription = cat)
-        }
-    }
-}
+
 @Preview
 @Composable
 fun BrowseScreenPreview() {
