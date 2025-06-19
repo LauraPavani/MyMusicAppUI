@@ -47,3 +47,36 @@ fun BrowseScreen() {
 fun BrowseScreenPreview() {
     BrowseScreen()
 }
+
+/*
+Old code that I tried to do by myself but it was too long
+@Composable
+fun BrowseScreen() {
+    val categories = listOf("Metal", "Progressive Metal", "Power Metal","Rock", "Folk", "Instrumental")
+
+    LazyVerticalGrid(
+        columns = GridCells.Fixed(2),
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp),
+        contentPadding = PaddingValues(8.dp),
+        verticalArrangement = Arrangement.spacedBy(12.dp),
+        horizontalArrangement = Arrangement.spacedBy(12.dp)
+    ) {
+        items(categories) { category ->
+            Text(
+                text = category,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp)
+            )
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun BrowseScreenPreview() {
+    BrowseScreen()
+}
+ */

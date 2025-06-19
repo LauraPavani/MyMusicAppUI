@@ -10,6 +10,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.mymusicappui.ui.theme.BrowseScreen
 import com.example.mymusicappui.ui.theme.Home
+import com.example.mymusicappui.ui.theme.Library
 
 @Composable
 fun Navigation(navController: NavController, viewModel: MainViewModel, pd: PaddingValues){
@@ -26,7 +27,8 @@ fun Navigation(navController: NavController, viewModel: MainViewModel, pd: Paddi
             BrowseScreen()
         }
         composable(Screen.BottomScreen.Library.bRoute){
-            //TODO Add Library Screen
+            //Add Library Screen
+            Library()
         }
         composable(Screen.DrawerScreen.Account.route){
             AccountView()
