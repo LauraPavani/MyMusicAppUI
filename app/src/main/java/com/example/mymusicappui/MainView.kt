@@ -1,5 +1,6 @@
 package com.example.mymusicappui
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.PaddingValues
@@ -71,11 +72,16 @@ fun MainView(){
             BottomNavigation (Modifier.wrapContentSize()){
                 screensInBottom.forEach{
                     item ->
+                    val isSelected = currentRoute == item.bRoute
+                    Log.d("Navigation","Item: ${item.bTitle}, Current Route: $currentRoute, Is Selected")
+                    val tint = if(isSelected)Color.White else Color.Black
+
                     BottomNavigationItem(selected = currentRoute == item.bRoute,
                         onClick = { controller.navigate(item.bRoute) }, icon = {
-                            Icon(contentDescription = item.bTitle, painter = painterResource(id = item.icon))
+                            Icon(tint = tint,
+                                contentDescription = item.bTitle, painter = painterResource(id = item.icon))
                         },
-                            label = {Text(text = item.bTitle)},
+                            label = {Text(text = item.bTitle, color = tint)},
                         selectedContentColor = Color.White,
                         unselectedContentColor = Color.Black
                     )
